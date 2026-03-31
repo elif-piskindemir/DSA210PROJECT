@@ -1,0 +1,17 @@
+# DSA 210 Term Project
+
+## Title
+Anomaly Detection in Water Distribution Networks
+
+## Description
+This project aims to detect anomalies such as leaks or pressure failures in water distribution systems using data science methods.
+
+## Steps
+- Data collection
+- Data preprocessing
+- Exploratory Data Analysis (EDA)
+- Hypothesis testing
+- Machine learning models
+
+## Technologies
+Python, Pandas, NumPy, Scikit-learn
