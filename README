@@ -1,17 +1,50 @@
-# DSA 210 Term Project
+# Anomaly Detection in Water Distribution Networks Using Data-Driven Methods
 
-## Title
-Anomaly Detection in Water Distribution Networks
+## Motivation
+Water distribution systems are critical infrastructure. Detecting anomalies such as pressure drops or irregular flow patterns can help prevent water loss and improve system reliability.
 
-## Description
-This project aims to detect anomalies such as leaks or pressure failures in water distribution systems using data science methods.
+## Data Source
+This project uses a real water distribution network dataset from the DiTEC Water Distribution Network (WDN) dataset.
 
-## Steps
-- Data collection
-- Data preprocessing
-- Exploratory Data Analysis (EDA)
-- Hypothesis testing
-- Machine learning models
+The dataset is provided as an EPANET input file (.inp), which describes the network structure, nodes, and pipes. A sample network file is used in this project. The simulation is performed using the WNTR (Water Network Tool for Resilience) Python library.
 
-## Technologies
-Python, Pandas, NumPy, Scikit-learn
+## Methodology
+
+The project follows a standard data science pipeline:
+
+1. Load network data from .inp file  
+2. Run EPANET simulation using WNTR  
+3. Extract node pressure values  
+4. Save processed data into CSV format  
+5. Perform Exploratory Data Analysis (EDA)  
+6. Visualize pressure behavior across nodes and time  
+7. Apply statistical hypothesis testing  
+8. (Next step) Apply machine learning for anomaly detection  
+
+## Exploratory Data Analysis
+
+The EDA includes:
+
+- Dataset shape and structure  
+- Summary statistics  
+- Pressure values over time  
+- Average pressure comparison across nodes  
+- Distribution of pressure values  
+- Pressure variability (standard deviation across nodes)  
+
+## Hypothesis Testing
+
+A two-sample t-test is used to compare the average pressure values between early and late time periods.
+
+- H0: There is no significant difference between early and late periods  
+- H1: There is a significant difference between early and late periods  
+
+Result:  
+The p-value is greater than 0.05, so we fail to reject H0. This indicates no statistically significant difference in average pressure between the two time periods.
+
+## How to Run
+
+1. Install dependencies:
+
+```bash
+pip3 install -r requirements.txt
