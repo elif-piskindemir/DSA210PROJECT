@@ -58,3 +58,5 @@ Since the dataset does not include labeled anomalies, synthetic labels were crea
 A Random Forest classifier was trained to classify normal and anomalous behavior. The model achieved high accuracy, indicating that pressure-based features are effective in distinguishing anomalies.
 
 Feature importance analysis shows that mean pressure is the most important factor in detecting anomalies.
+
+Note: The model achieved perfect accuracy due to simple threshold-based anomaly labeling. This indicates the need for more realistic anomaly scenarios in future work.
