@@ -35,7 +35,7 @@ DSA210PROJECT/
 - ditec_processing.ipynb
 - eda.ipynb
 - requirements.txt
-- README.md
+- README
 
 ## Methodology
 
