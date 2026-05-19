@@ -1,62 +1,111 @@
 # Anomaly Detection in Water Distribution Networks Using Data-Driven Methods
 
+## Project Overview
+
+This project analyzes water distribution network data to detect abnormal system behavior such as low-pressure patterns, irregular sensor readings, and possible anomaly conditions.
+
+The goal of the project is to apply the main steps of the data science pipeline, including data collection, preprocessing, exploratory data analysis, hypothesis testing, and machine learning.
+
 ## Motivation
-Water distribution systems are critical infrastructure. Detecting anomalies such as pressure drops or irregular flow patterns can help prevent water loss and improve system reliability.
+
+Water distribution networks are critical infrastructures. Detecting abnormal behavior in these systems can help reduce water loss, identify possible leaks, and improve the reliability of water management systems.
+
+I chose this topic because it connects a real-world engineering problem with data analysis and machine learning techniques.
 
 ## Data Source
-This project uses a real water distribution network dataset from the DiTEC Water Distribution Network (WDN) dataset.
 
-The dataset is provided as an EPANET input file (.inp), which describes the network structure, nodes, and pipes. A sample network file is used in this project. The simulation is performed using the WNTR (Water Network Tool for Resilience) Python library.
+The project uses publicly available water distribution network data from the DiTEC Water Distribution Network Dataset.
+
+Dataset source:
+
+https://github.com/DiTEC-project/DiTEC_WDN_dataset
+
+The repository includes raw network input files and processed pressure data used for analysis.
+
+## Repository Structure
+
+DSA210PROJECT/
+- data/
+  - raw/
+  - processed/
+- report/
+  - proposal.md
+  - proposal.pdf
+  - final_report.md
+- ditec_processing.ipynb
+- eda.ipynb
+- requirements.txt
+- README.md
 
 ## Methodology
 
-The project follows a standard data science pipeline:
+The project follows these main steps:
 
-1. Load network data from .inp file  
-2. Run EPANET simulation using WNTR  
-3. Extract node pressure values  
-4. Save processed data into CSV format  
-5. Perform Exploratory Data Analysis (EDA)  
-6. Visualize pressure behavior across nodes and time  
-7. Apply statistical hypothesis testing  
-8. (Next step) Apply machine learning for anomaly detection  
+1. Collect water distribution network data
+2. Process raw network files
+3. Generate and clean pressure-related data
+4. Perform exploratory data analysis
+5. Visualize sensor behavior and pressure patterns
+6. Apply hypothesis testing
+7. Create anomaly labels based on low-pressure behavior
+8. Apply machine learning methods for anomaly detection
+9. Evaluate and compare model results
 
-## Exploratory Data Analysis
+## Machine Learning Methods
 
-The EDA includes:
+The final machine learning stage includes:
 
-- Dataset shape and structure  
-- Summary statistics  
-- Pressure values over time  
-- Average pressure comparison across nodes  
-- Distribution of pressure values  
-- Pressure variability (standard deviation across nodes)  
+- Logistic Regression
+- Random Forest
+- Isolation Forest
 
-## Hypothesis Testing
+Logistic Regression is used as a baseline supervised model. Random Forest is used as a stronger supervised classification model. Isolation Forest is used as an unsupervised anomaly detection method.
 
-A two-sample t-test is used to compare the average pressure values between early and late time periods.
-
-- H0: There is no significant difference between early and late periods  
-- H1: There is a significant difference between early and late periods  
-
-Result:  
-The p-value is greater than 0.05, so we fail to reject H0. This indicates no statistically significant difference in average pressure between the two time periods.
+Since the dataset does not contain manually verified anomaly labels, anomaly labels are created using a statistical threshold based on unusually low minimum pressure values.
 
 ## How to Run
 
-1. Install dependencies:
+First, install the required dependencies:
 
-```bash
 pip3 install -r requirements.txt
 
-## Machine Learning
+Then open Jupyter Notebook:
 
-In the machine learning stage, several features were extracted from the pressure data, including mean pressure, minimum pressure, maximum pressure, standard deviation, and pressure range.
+jupyter notebook
 
-Since the dataset does not include labeled anomalies, synthetic labels were created by marking the lowest 10% of mean pressure values as anomalies.
+Open and run the following notebooks:
 
-A Random Forest classifier was trained to classify normal and anomalous behavior. The model achieved high accuracy, indicating that pressure-based features are effective in distinguishing anomalies.
+- ditec_processing.ipynb
+- eda.ipynb
 
-Feature importance analysis shows that mean pressure is the most important factor in detecting anomalies.
+## Requirements
 
-Note: The model achieved perfect accuracy due to simple threshold-based anomaly labeling. This indicates the need for more realistic anomaly scenarios in future work.
+The main Python libraries used in this project are:
+
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- scipy
+- scikit-learn
+- wntr
+- jupyter
+
+## Final Report
+
+The final report is available in the report folder:
+
+report/final_report.md
+
+The report includes the motivation, data source, data preparation, exploratory data analysis, hypothesis testing, machine learning methods, findings, limitations, future work, and AI assistance disclosure.
+
+## AI Assistance Disclosure
+
+AI tools were used for debugging support, explanation of programming concepts, and improvement of documentation and report writing. All implementation decisions, analysis steps, and final project organization were reviewed and completed by the student.
+
+## References
+
+- DiTEC Water Distribution Network Dataset: https://github.com/DiTEC-project/DiTEC_WDN_dataset
+- Python Documentation: https://www.python.org/
+- Scikit-learn Documentation: https://scikit-learn.org/
+- WNTR Documentation: https://wntr.readthedocs.io/
