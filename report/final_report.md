@@ -96,6 +96,8 @@ The project also demonstrated that preprocessing and feature selection significa
 
 Visual analysis revealed noticeable differences between normal and abnormal sensor behavior.
 
+The machine learning results showed that Logistic Regression achieved an accuracy of approximately 90.37%, Random Forest achieved 100% accuracy, and Isolation Forest achieved approximately 80.74% accuracy on the test set. However, the perfect Random Forest result should be interpreted carefully because the anomaly labels were created using a threshold-based rule rather than manually verified real anomaly labels. Therefore, the result shows that pressure-based features are useful for separating the created anomaly classes, but it does not prove perfect real-world anomaly detection performance.
+
 ---
 
 ## Limitations and Future Work
@@ -116,7 +118,7 @@ Future improvements could include:
 
 AI tools were used during this project for debugging support, explanation of programming concepts and improvement of documentation.
 
-All implementation decisions, data analysis steps, and project organization were reviewed and completed by the me -Elif Pişkindemir.
+All implementation decisions, data analysis steps, and project organization were reviewed and completed by me, Elif Pişkindemir.
 
 ---
 

@@ -35,7 +35,7 @@ DSA210PROJECT/
 - ditec_processing.ipynb
 - eda.ipynb
 - requirements.txt
-- README
+- README.md
 
 ## Methodology
 
@@ -67,11 +67,15 @@ Since the dataset does not contain manually verified anomaly labels, anomaly lab
 
 First, install the required dependencies:
 
+```bash
 pip3 install -r requirements.txt
+```
 
 Then open Jupyter Notebook:
 
+```bash
 jupyter notebook
+```
 
 Open and run the following notebooks:
 
