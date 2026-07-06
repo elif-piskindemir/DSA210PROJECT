@@ -105,7 +105,7 @@ The report includes the motivation, data source, data preparation, exploratory d
 
 ## AI Assistance Disclosure
 
-AI tools were used for debugging support, explanation of programming concepts, and improvement of documentation and report writing. All implementation decisions, analysis steps, and final project organization were reviewed and completed by the student.
+AI tools were used for debugging support, explanation of programming concepts, and improvement of documentation and report writing. All implementation decisions, analysis steps, and final project organization were reviewed and completed by me.
 
 ## References
 

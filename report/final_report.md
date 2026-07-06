@@ -96,7 +96,13 @@ The project also demonstrated that preprocessing and feature selection significa
 
 Visual analysis revealed noticeable differences between normal and abnormal sensor behavior.
 
-The machine learning results showed that Logistic Regression achieved an accuracy of approximately 90.37%, Random Forest achieved 100% accuracy, and Isolation Forest achieved approximately 80.74% accuracy on the test set. However, the perfect Random Forest result should be interpreted carefully because the anomaly labels were created using a threshold-based rule rather than manually verified real anomaly labels. Therefore, the result shows that pressure-based features are useful for separating the created anomaly classes, but it does not prove perfect real-world anomaly detection performance.
+The machine learning results showed that Logistic Regression achieved an accuracy of approximately 90.10% (due to predicting the majority class of normal system status), Random Forest achieved a realistic accuracy of 92.57%, and Isolation Forest achieved approximately 81.19% accuracy on the test set. 
+
+Initially, the Random Forest model achieved a suspicious 100% accuracy due to two main bugs:
+1. **Target Leakage:** The anomaly labels were defined based on the lowest 10% of `min_pressure`. However, the training features included `max_pressure` and `pressure_range` (which is calculated as `max_pressure - min_pressure`), allowing the tree-based models to mathematically reconstruct `min_pressure` perfectly and memorize the classification threshold.
+2. **Feature Corruption:** The `time` column was accidentally included in calculating the row-wise summary statistics (like `mean_pressure` and `max_pressure`) in the final machine learning pipeline, which skewed the features since time increases linearly.
+
+To fix these issues, we corrected the `time` column bug and removed the leaking features (`min_pressure` and `pressure_range`) from the input variables of the contemporaneous models. As a result, the Random Forest classifier achieved a scientifically sound and generalizable test accuracy of 92.57% (correctly identifying 5 out of 20 anomalies with zero false positives).
 
 ---
 
@@ -111,7 +117,6 @@ Future improvements could include:
 - Integrating real-time sensor streams
 - Comparing additional anomaly detection algorithms
 - Building a real-time monitoring dashboard
-
 ---
 
 ## AI Assistance Disclosure
